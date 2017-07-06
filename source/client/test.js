@@ -2,6 +2,11 @@
  * Created by yura on 05.07.17.
  */
 
-export default  {
-    a: 'asd'
+import React from 'react';
+
+
+export default () => {
+    return (
+        <div>Test</div>
+    )
 }
