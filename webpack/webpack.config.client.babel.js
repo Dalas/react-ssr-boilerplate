@@ -4,7 +4,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const client = require('universal-webpack/config').client;
+const client = require('universal-webpack').client_configuration;
 const settings = require('./universal-webpack-settings');
 const configuration = require('./webpack.config');
 
@@ -13,7 +13,7 @@ const configuration = require('./webpack.config');
 /*      Client entries       */
 /* ************************* */
 configuration.entry = {
-    server: './source/client/test.js'
+    client: './source/client/application.js'
 };
 
 

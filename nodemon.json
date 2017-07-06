@@ -1,0 +1,6 @@
+{
+    "verbose": true,
+    "delay": 1,
+    "watch": "./build/server",
+    "exec": "./build/server/server.js"
+}

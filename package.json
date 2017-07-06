@@ -4,17 +4,64 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "start:server": "node build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:client:prod": "webpack --colors --display-error-details --config ./webpack/webpack.config.client.babel.js",
-    "build:server:prod": "webpack --colors --display-error-details --config ./webpack/webpack.config.server.babel.js"
+    "start:dev": "better-npm-run start:dev",
+    "build:prod": "better-npm-run build:server:prod && better-npm-run build:client:prod",
+    "build:client:prod": "better-npm-run build:client:prod",
+    "build:client:dev": "better-npm-run build:client:dev",
+    "watch:client": "better-npm-run build:client:prod --watch",
+    "build:server:prod": "better-npm-run build:server:prod",
+    "build:server:dev": "better-npm-run build:server:dev",
+    "watch:server": "webpack --watch --colors --display-error-details --config ./webpack/webpack.config.server.babel.js"
+  },
+  "betterScripts": {
+    "build:client:prod": {
+      "command": "webpack --colors --display-error-details --config ./webpack/webpack.config.client.babel.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build:server:prod": {
+      "command": "webpack --colors --display-error-details --config ./webpack/webpack.config.server.babel.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build:client:dev": {
+      "command": "webpack --colors --display-error-details --config ./webpack/webpack.config.client.babel.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "build:server:dev": {
+      "command": "webpack --colors --display-error-details --config ./webpack/webpack.config.server.babel.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "start:dev": {
+      "command": "nodemon --config ../nodemon.json ./build/server/server.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
   },
   "author": "dalas",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.3",
+    "install": "^0.10.1",
+    "npm": "^5.1.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-helmet": "^5.1.3",
+    "react-jobs": "^1.0.0-beta.3",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.7.1",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -25,7 +72,9 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "better-npm-run": "0.0.15",
     "extract-text-webpack-plugin": "^2.1.2",
+    "nodemon": "^1.11.0",
     "universal-webpack": "^0.3.9",
     "webpack": "^3.0.0"
   }

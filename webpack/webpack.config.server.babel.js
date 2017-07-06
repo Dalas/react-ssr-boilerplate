@@ -13,11 +13,11 @@ const configuration = require('./webpack.config');
 /*      Server entries       */
 /* ************************* */
 configuration.entry = {
-    server: './source/server.js'
+    server: './source/server/server.js'
 };
 
 configuration.output
-    .path = path.join(__dirname, '../build');
+    .path = path.join(__dirname, '../build/server');
 
 configuration
     .target = 'node';
